@@ -1,0 +1,118 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.6rem;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(99, 95, 95, 0.86);
+}
+
+#drum-machine {
+  border: 6px solid yellowgreen;
+  width: 68rem;
+  box-sizing: border-box;
+  padding: 0.75em;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 100px;
+  background-color: rgba(128, 128, 128, 0.336);
+}
+
+/* DRUM PADS */
+
+#drum-pads {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0.625em;
+  width: 6em;
+}
+
+.drum-pad {
+  width: 90px;
+  height: 85px;
+  background-color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  border-radius: 5px;
+  box-shadow: 3px 5px 5px black;
+  cursor: pointer;
+}
+
+/*DRUM CONTROLS*/
+
+#drum-controls {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.switch-div{
+  display: flex;
+  flex-direction: column;
+}
+
+.switch-name {
+  font-weight: bold;
+  font-size: 1.1em;
+  text-align: center;
+}
+
+.switch-div--switch{
+  width: 60px;
+  height: 25px;
+  background-color: black;
+  padding: 2px;
+  box-sizing: border-box;
+  display: flex;
+  cursor: pointer;
+}
+
+.switch-div--switch--cursor{
+  background-color: blue;
+  width: 28px;
+  height: 100%;
+}
+
+#display{
+  width: 200px;
+  height: 50px;
+  background-color: rgb(128, 128, 128);
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.bar{
+  width: 270px;
+  height: 7px;
+  background-color: rgba(0, 0, 0, 0.641); 
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5),
+              inset 1px 1px 3px rgba(255, 255, 255, 0.3);
+  margin: 30px 0;
+  display: flex;
+  align-items: center;
+}
+
+.bar > .selector{
+  width: 7px;
+  height: 25px;
+  background-color: blue;
+  box-shadow: 2px 1px 2px black;
+  cursor: pointer;
+}

@@ -10,7 +10,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(99, 95, 95, 0.86);
+  background-color: rgb(65, 61, 61);
 }
 
 #drum-machine {
@@ -32,6 +32,7 @@ body {
   grid-template-rows: repeat(3, 1fr);
   gap: 0.625em;
   width: 6em;
+  font-size: 1.1em;
 }
 
 .drum-pad {
@@ -97,7 +98,7 @@ body {
   font-weight: bold;
 }
 
-.bar{
+/* .bar{
   width: 270px;
   height: 7px;
   background-color: rgba(0, 0, 0, 0.641); 
@@ -113,6 +114,37 @@ body {
   width: 7px;
   height: 25px;
   background-color: blue;
-  box-shadow: 2px 1px 2px black;
+  box-shadow: 2px 1px 2px rgba(0, 0, 0, 0.449);
   cursor: pointer;
+} */
+
+#volume-btns-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin: 20px 0 25px;
+  font-size: 1.1em;
+}
+
+.volume-btns{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-family: 'Inter', sans-serif;
+  width: 40px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 1.1em;
+  border: none;
+}
+
+.volume-btns:hover{
+  background-color: blue;
+}
+
+.volume-btns-text{
+  font-weight: bold;
 }

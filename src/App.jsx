@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useState, useEffect, useCallback } from "react"
 import PropTypes from 'prop-types';
 import Cev from "./assets/Cev_H2.mp3"
@@ -15,7 +14,7 @@ import RP4Kick from "./assets/RP4_KICK.mp3"
 export default function App() {
 
   const [powerOn, setPowerOn] = useState(true)
-  const [bankOn, setBankOn] = useState(false)
+  // const [bankOn, setBankOn] = useState(false)
   const [volume, setVolume] = useState(50)
   const [display, setDisplay] = useState("");
 
@@ -34,9 +33,9 @@ export default function App() {
     }
   }, [powerOn, volume]);
 
-  function toggleBank() {
-    setBankOn((bankOn)=> !bankOn)
-  }
+  // function toggleBank() {
+  //   setBankOn((bankOn)=> !bankOn)
+  // }
 
   function togglePower() {
     setPowerOn((powerOn)=> !powerOn)
@@ -52,7 +51,7 @@ export default function App() {
 
   useEffect(() => {
     function handleKeyDown(event) {
-      const key = event.key.toUpperCase();
+      const key = event.key.toUpperCase();      
       const validKeys = ["Q", "W", "E", "A", "S", "D", "Z", "X", "C"];
       if (validKeys.includes(key)) {
         playAudio(key);
@@ -70,39 +69,39 @@ export default function App() {
     <main>
       <div id="drum-machine">
         <div id="drum-pads">
-          <button className="drum-pad" onClick={() => playAudio("Q")}>
+          <button id="Q-pad" className="drum-pad" onClick={() => playAudio("Q")}>
             Q
             <audio src={Cev} className="clip" id="Q"></audio>
           </button>
-          <button className="drum-pad" onClick={() => playAudio("W")}>
+          <button id="W-pad" className="drum-pad" onClick={() => playAudio("W")}>
             W
             <audio src={Dsc} className="clip" id="W"></audio>
           </button>
-          <button className="drum-pad" onClick={() => playAudio("E")}>
+          <button id="E-pad" className="drum-pad" onClick={() => playAudio("E")}>
             E
             <audio src={Heater1} className="clip" id="E"></audio>
           </button>
-          <button className="drum-pad" onClick={() => playAudio("A")}>
+          <button id="A-pad" className="drum-pad" onClick={() => playAudio("A")}>
             A
             <audio src={Heater2} className="clip" id="A"></audio>
           </button>
-          <button className="drum-pad" onClick={() => playAudio("S")}>
+          <button id="S-pad" className="drum-pad" onClick={() => playAudio("S")}>
             S
             <audio src={Heater3} className="clip" id="S"></audio>
           </button>
-          <button className="drum-pad" onClick={() => playAudio("D")}>
+          <button id="D-pad" className="drum-pad" onClick={() => playAudio("D")}>
             D
             <audio src={Heater4} className="clip" id="D"></audio>
           </button>
-          <button className="drum-pad" onClick={() => playAudio("Z")}>
+          <button id="Z-pad" className="drum-pad" onClick={() => playAudio("Z")}>
             Z
             <audio src={Heater5} className="clip" id="Z"></audio>
           </button>
-          <button className="drum-pad" onClick={() => playAudio("X")}>
+          <button id="X-pad" className="drum-pad" onClick={() => playAudio("X")}>
             X
             <audio src={KicknHat} className="clip" id="X"></audio>
           </button>
-          <button className="drum-pad" onClick={() => playAudio("C")}>
+          <button id="C-pad" className="drum-pad" onClick={() => playAudio("C")}>
             C
             <audio src={RP4Kick} className="clip" id="C"></audio>
           </button>
@@ -117,32 +116,32 @@ export default function App() {
             {display}
           </div>
           <VolumeControl setVolume={setVolume} setDisplay={setDisplay}/>
-          <BankSwitch
+          {/* <BankSwitch
             name={"Bank"}
             bankOn={bankOn}
             toggleBank={toggleBank}
-          />
+          /> */}
         </div>
       </div>
     </main>
   )
 }
 
-BankSwitch.propTypes = {
-  name: PropTypes.string.isRequired,
-  bankOn: PropTypes.bool.isRequired,
-  toggleBank: PropTypes.func.isRequired
-};
+// BankSwitch.propTypes = {
+//   name: PropTypes.string.isRequired,
+//   bankOn: PropTypes.bool.isRequired,
+//   toggleBank: PropTypes.func.isRequired
+// };
 
-function BankSwitch({name, bankOn, toggleBank}) {
-  return (
-    <Switch
-      name={name}
-      on={bankOn}
-      toggleSwitch={toggleBank}
-    />
-  )
-}
+// function BankSwitch({name, bankOn, toggleBank}) {
+//   return (
+//     <Switch
+//       name={name}
+//       on={bankOn}
+//       toggleSwitch={toggleBank}
+//     />
+//   )
+// }
 
 PowerSwitch.propTypes = {
   name: PropTypes.string.isRequired,
@@ -180,6 +179,11 @@ function Switch({name, on, toggleSwitch}) {
       </div>
     </div>
   );
+}
+
+VolumeControl.propTypes = {
+  setVolume: PropTypes.func.isRequired,
+  setDisplay: PropTypes.func.isRequired
 }
 
 function VolumeControl({ setVolume, setDisplay }) {

@@ -1,15 +1,5 @@
 import { useState, useEffect, useCallback } from "react"
 import PropTypes from 'prop-types';
-import Cev from "./assets/Cev_H2.mp3"
-import Dsc from "./assets/Dsc_Oh.mp3"
-import Heater1 from "./assets/Heater-1.mp3"
-import Heater2 from "./assets/Heater-2.mp3"
-import Heater3 from "./assets/Heater-3.mp3"
-import Heater4 from "./assets/Heater-4.mp3"
-import Heater5 from "./assets/Heater-5.mp3"
-import KicknHat from "./assets/KicknHat.mp3"
-import RP4Kick from "./assets/RP4_KICK.mp3"
-
 
 export default function App() {
 
@@ -18,15 +8,17 @@ export default function App() {
   const [volume, setVolume] = useState(50)
   const [display, setDisplay] = useState("");
 
-  const getFileNameFromSrc = (src) => {
-    const parts = src.split('/');
-    return parts[parts.length - 1].split('.')[0];
+  const getFileNameFromAlt = (alt) => {
+    if (alt)
+      return alt.slice(0, 1).toUpperCase() + alt.slice(1);
+    else
+      return "Name must be defined"
   };
 
   const playAudio = useCallback((audioId) => {
     const audioElement = document.getElementById(audioId)
     if (audioElement && powerOn) {
-      const fileName = getFileNameFromSrc(audioElement.src);
+      const fileName = getFileNameFromAlt(audioElement.getAttribute("data-alt"));
       setDisplay(fileName);
       audioElement.volume = volume / 100;
       audioElement.play()
@@ -71,39 +63,39 @@ export default function App() {
         <div id="drum-pads">
           <button id="Q-pad" className="drum-pad" onClick={() => playAudio("Q")}>
             Q
-            <audio src={Cev} className="clip" id="Q"></audio>
+            <audio src="https://cdn.freecodecamp.org/testable-projects-fcc/audio/Heater-1.mp3" className="clip" id="Q" data-alt="Heater 1" ></audio>
           </button>
           <button id="W-pad" className="drum-pad" onClick={() => playAudio("W")}>
             W
-            <audio src={Dsc} className="clip" id="W"></audio>
+            <audio src="https://cdn.freecodecamp.org/testable-projects-fcc/audio/Heater-2.mp3" className="clip" id="W" data-alt="Heater 2"></audio>
           </button>
           <button id="E-pad" className="drum-pad" onClick={() => playAudio("E")}>
             E
-            <audio src={Heater1} className="clip" id="E"></audio>
+            <audio src="https://cdn.freecodecamp.org/testable-projects-fcc/audio/Heater-3.mp3" className="clip" id="E" data-alt="Heater 3"></audio>
           </button>
           <button id="A-pad" className="drum-pad" onClick={() => playAudio("A")}>
             A
-            <audio src={Heater2} className="clip" id="A"></audio>
+            <audio src="https://cdn.freecodecamp.org/testable-projects-fcc/audio/Heater-4_1.mp3" className="clip" id="A" data-alt="Heater 4"></audio>
           </button>
           <button id="S-pad" className="drum-pad" onClick={() => playAudio("S")}>
             S
-            <audio src={Heater3} className="clip" id="S"></audio>
+            <audio src="https://cdn.freecodecamp.org/testable-projects-fcc/audio/Heater-6.mp3" className="clip" id="S" data-alt="Clap"></audio>
           </button>
           <button id="D-pad" className="drum-pad" onClick={() => playAudio("D")}>
             D
-            <audio src={Heater4} className="clip" id="D"></audio>
+            <audio src="https://cdn.freecodecamp.org/testable-projects-fcc/audio/Dsc_Oh.mp3" className="clip" id="D" data-alt="Open-HH"></audio>
           </button>
           <button id="Z-pad" className="drum-pad" onClick={() => playAudio("Z")}>
             Z
-            <audio src={Heater5} className="clip" id="Z"></audio>
+            <audio src="https://cdn.freecodecamp.org/testable-projects-fcc/audio/Kick_n_Hat.mp3" className="clip" id="Z" data-alt="Kick-n-Hat"></audio>
           </button>
           <button id="X-pad" className="drum-pad" onClick={() => playAudio("X")}>
             X
-            <audio src={KicknHat} className="clip" id="X"></audio>
+            <audio src="https://cdn.freecodecamp.org/testable-projects-fcc/audio/RP4_KICK_1.mp3" className="clip" id="X" data-alt="Kick"></audio>
           </button>
           <button id="C-pad" className="drum-pad" onClick={() => playAudio("C")}>
             C
-            <audio src={RP4Kick} className="clip" id="C"></audio>
+            <audio src="https://cdn.freecodecamp.org/testable-projects-fcc/audio/Cev_H2.mp3" className="clip" id="C" data-alt="Closed-HH"></audio>
           </button>
         </div>
         <div id="drum-controls">
